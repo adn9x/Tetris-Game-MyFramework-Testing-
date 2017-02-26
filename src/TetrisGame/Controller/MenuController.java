@@ -1,6 +1,7 @@
 package TetrisGame.Controller;
 
 import GameComponent.State;
+import TetrisGame.State.GameState;
 import TetrisGame.State.IDState;
 
 import java.awt.event.KeyAdapter;
@@ -19,12 +20,10 @@ public class MenuController extends KeyAdapter {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        super.keyReleased(e);
 
         if (e.getKeyCode() > 0) {
 
             menuState.getGame().setCurrentState(IDState.GAME_STATE);
-            menuState.getGame().addKeyListener(GameController.instance);
         }
     }
 }

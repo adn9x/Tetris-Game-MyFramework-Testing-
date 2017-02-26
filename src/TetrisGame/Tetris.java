@@ -33,9 +33,8 @@ public class Tetris {
 
         game.setCurrentState(IDState.MENU_STATE);
 
-        game.setCurrentState(IDState.MENU_STATE);
-
-        game.addKeyListener(new MenuController( menuState));
+        game.addKeyListener(GameController.instance);
+        game.addKeyListener(new MenuController(menuState));
 
     }
 

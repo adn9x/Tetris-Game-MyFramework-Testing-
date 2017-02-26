@@ -12,10 +12,18 @@ import java.awt.*;
 public class GameState extends State {
 
     private Stage stage;
+    private Board board;
 
     public GameState() {
         this.stage = new Stage();
-        stage.addActor(new Board());
+        board = new Board(this);
+        stage.addActor(board);
+    }
+
+    public void reset() {
+        stage.removeActor(board);
+        board = new Board(this);
+        stage.addActor(board);
     }
 
     @Override

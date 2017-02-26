@@ -11,7 +11,7 @@ public final class GameController extends KeyAdapter {
 
     public boolean up, down, left, right, space;
 
-    public static GameController instance = new GameController();
+    public static final GameController instance = new GameController();
 
     private GameController() {
 

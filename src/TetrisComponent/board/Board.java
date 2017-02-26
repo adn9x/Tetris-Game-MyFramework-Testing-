@@ -1,9 +1,14 @@
 package TetrisComponent.board;
 
 import GameComponent.Actor;
+import GameComponent.State;
 import TetrisComponent.piece.Piece;
 import TetrisComponent.piece.Tile;
 import TetrisGame.Controller.GameController;
+import TetrisGame.Controller.MenuController;
+import TetrisGame.State.GameState;
+import TetrisGame.State.IDState;
+import TetrisGame.State.MenuState;
 
 import java.awt.*;
 
@@ -17,12 +22,13 @@ public class Board extends Actor {
     private Piece fallingPiece;
     private int score = 0;
     private int currentNormalSpeed = Piece.NORMAL_SPEED;
+    private GameState gameState;
 
-    public Board() {
+    public Board(GameState gameState) {
         super(BoardConstant.MIN_X_POSITION, BoardConstant.MIN_Y_POSITION);
 
         pieceFactory = AbtractFactory.getPieceFactory(AbtractFactory.DEFAULT_MODE);
-
+        this.gameState = gameState;
     }
 
 
@@ -204,6 +210,17 @@ public class Board extends Actor {
                 if (isFullRow(row)) {
                     removeFullRow(row);
                 }
+            }
+
+
+            for (int i = 0; i < BoardConstant.COLUMN; i++) {
+
+                if (tileCoordinate[BoardConstant.STARTING_AREA][i] != null) {
+
+                    gameState.getGame().setCurrentState(IDState.MENU_STATE);
+                    gameState.getGame().addKeyListener(new MenuController(gameState.getGame().getState(IDState.MENU_STATE)));
+                }
+
             }
 
             fallingPiece = null;
