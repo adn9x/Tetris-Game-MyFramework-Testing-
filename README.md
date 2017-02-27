@@ -1,4 +1,4 @@
 # Tetris-Game-MyFramework-Testing-
 
 
-Nhằm mục đích test MyFramework, kiểm tra và bổ sung chức năng cho framework.
+This project is made in order to test MyFramwork, create more functional for that project.
